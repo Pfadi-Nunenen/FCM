@@ -1,0 +1,15 @@
+{
+  "name": "Vento-Nuenenen/FCM",
+  "description": "A FCM-Module which sends Notifications on Node-Update",
+  "minimum-stability": "stable",
+  "license": "none",
+  "authors": [
+    {
+      "name": "Vento-Nuenenen",
+      "email": "vento@pfadi-nuenenen.ch"
+    }
+  ],
+  "require": {
+    "paragraph1/php-fcm": "0.7"
+  }
+}

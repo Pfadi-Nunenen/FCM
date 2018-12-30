@@ -1,0 +1,72 @@
+<?php
+
+use paragraph1\phpFCM\Client;
+use paragraph1\phpFCM\Message;
+use paragraph1\phpFCM\Recipient\Topic;
+use paragraph1\phpFCM\Notification;
+
+require_once 'vendor/autoload.php';
+
+function fcm_node_update($node){
+    if ($node->type == 'kastenzettel_aetna'){
+        $apiKey = 'AAAAui1IzmE:APA91bEqjOebLbA99cwnvAIZUJWqz430-BuomrzfUJpIhCbotKlABBNP9Pmw4IMgL-TS5aO5BUltcUZUCuuypS8ZofF0fOq0YPIVDTPdQPC4Amu1CDIXCsQzCdl_QUgafEEqXG-IMYFQ';
+        $client = new Client();
+        $client->setApiKey($apiKey);
+        $client->injectHttpClient(new \GuzzleHttp\Client());
+
+        $message = new Message();
+        $message->addRecipient(new Topic('any'));
+        $message->setNotification(new Notification('Kastenzettel Aetna','Der Kastenzettel vom Stamm Aetna wurde aktualisiert.'))->setData(array('ID' => 123));
+
+        $response = $client->send($message);
+
+        if ($response->getStatusCode() == 200) {
+            drupal_set_message("Es wurde eine Benachrichtigung an alle App-Nutzer gesendet!", 'status');
+        }
+    }elseif ($node->type == 'kastenzettel_saturn'){
+        $apiKey = 'AAAAui1IzmE:APA91bEqjOebLbA99cwnvAIZUJWqz430-BuomrzfUJpIhCbotKlABBNP9Pmw4IMgL-TS5aO5BUltcUZUCuuypS8ZofF0fOq0YPIVDTPdQPC4Amu1CDIXCsQzCdl_QUgafEEqXG-IMYFQ';
+        $client = new Client();
+        $client->setApiKey($apiKey);
+        $client->injectHttpClient(new \GuzzleHttp\Client());
+
+        $message = new Message();
+        $message->addRecipient(new Topic('any'));
+        $message->setNotification(new Notification('Website Test','Website Information'))->setData(array('ID' => 123));
+
+        $response = $client->send($message);
+
+        if ($response->getStatusCode() == 200) {
+            drupal_set_message("Es wurde eine Benachrichtigung an alle App-Nutzer gesendet!", 'status');
+        }
+    }elseif ($node->type == 'kastenzettel_wolf'){
+        $apiKey = 'AAAAui1IzmE:APA91bEqjOebLbA99cwnvAIZUJWqz430-BuomrzfUJpIhCbotKlABBNP9Pmw4IMgL-TS5aO5BUltcUZUCuuypS8ZofF0fOq0YPIVDTPdQPC4Amu1CDIXCsQzCdl_QUgafEEqXG-IMYFQ';
+        $client = new Client();
+        $client->setApiKey($apiKey);
+        $client->injectHttpClient(new \GuzzleHttp\Client());
+
+        $message = new Message();
+        $message->addRecipient(new Topic('any'));
+        $message->setNotification(new Notification('Website Test','Website Information'))->setData(array('ID' => 123));
+
+        $response = $client->send($message);
+
+        if ($response->getStatusCode() == 200) {
+            drupal_set_message("Es wurde eine Benachrichtigung an alle App-Nutzer gesendet!", 'status');
+        }
+    }elseif ($node->type == 'kastenzettel_biber'){
+        $apiKey = 'AAAAui1IzmE:APA91bEqjOebLbA99cwnvAIZUJWqz430-BuomrzfUJpIhCbotKlABBNP9Pmw4IMgL-TS5aO5BUltcUZUCuuypS8ZofF0fOq0YPIVDTPdQPC4Amu1CDIXCsQzCdl_QUgafEEqXG-IMYFQ';
+        $client = new Client();
+        $client->setApiKey($apiKey);
+        $client->injectHttpClient(new \GuzzleHttp\Client());
+
+        $message = new Message();
+        $message->addRecipient(new Topic('any'));
+        $message->setNotification(new Notification('Website Test','Website Information'))->setData(array('ID' => 123));
+
+        $response = $client->send($message);
+
+        if ($response->getStatusCode() == 200) {
+            drupal_set_message("Es wurde eine Benachrichtigung an alle App-Nutzer gesendet!", 'status');
+        }
+    }
+}
