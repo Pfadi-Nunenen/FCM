@@ -16,7 +16,7 @@ function fcm_node_update($node){
 
         $message = new Message();
         $message->addRecipient(new Topic('any'));
-        $message->setNotification(new Notification('Kastenzettel Aetna','Der Kastenzettel vom Stamm Aetna wurde aktualisiert.'))->setData(array('ID' => 123));
+        $message->setNotification(new Notification('Kastenzettel Aetna','Der Kastenzettel vom Stamm Aetna wurde aktualisiert.'));
 
         $response = $client->send($message);
 
@@ -31,7 +31,7 @@ function fcm_node_update($node){
 
         $message = new Message();
         $message->addRecipient(new Topic('any'));
-        $message->setNotification(new Notification('Website Test','Website Information'))->setData(array('ID' => 123));
+        $message->setNotification(new Notification('Kastenzettel Saturn','Der Kastenzettel vom Trupp Saturn wurde aktualisiert.'));
 
         $response = $client->send($message);
 
@@ -46,7 +46,7 @@ function fcm_node_update($node){
 
         $message = new Message();
         $message->addRecipient(new Topic('any'));
-        $message->setNotification(new Notification('Website Test','Website Information'))->setData(array('ID' => 123));
+        $message->setNotification(new Notification('Kastenzettel Phönix','Der Kastenzettel der Meute Phönix wurde aktualisiert.'));
 
         $response = $client->send($message);
 
@@ -61,7 +61,7 @@ function fcm_node_update($node){
 
         $message = new Message();
         $message->addRecipient(new Topic('any'));
-        $message->setNotification(new Notification('Website Test','Website Information'))->setData(array('ID' => 123));
+        $message->setNotification(new Notification('Kastenzettel Biberstein','Der Kastenzettel der Familie Biberstein wurde aktualisiert.'));
 
         $response = $client->send($message);
 
