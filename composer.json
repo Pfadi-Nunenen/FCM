@@ -1,5 +1,5 @@
 {
-  "name": "Vento-Nuenenen/FCM",
+  "name": "pfadinue/fcm",
   "description": "A FCM-Module which sends Notifications on Node-Update",
   "minimum-stability": "stable",
   "license": "none",
