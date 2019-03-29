@@ -15,10 +15,13 @@ function fcm_node_update($node){
 
     if ($node->type == 'kastenzettel_aetna'){
 	    if ($node->field_push_notification['und'][0]['value'] == 1) {
+		    $notification = new Notification('Kastenzettel Aetna','Der Kastenzettel vom Stamm Aetna wurde aktualisiert.');
+		    $notification->setIcon('ic_launcher');
+
 		    $message = new Message();
 	        $message->addRecipient(new Topic('any'));
 	        $message->addRecipient(new Topic('aetna'));
-	        $message->setNotification(new Notification('Kastenzettel Aetna','Der Kastenzettel vom Stamm Aetna wurde aktualisiert.'));
+	        $message->setNotification($notification);
 
 	        $response = $client->send($message);
 
@@ -32,10 +35,13 @@ function fcm_node_update($node){
 	    }
     }elseif ($node->type == 'kastenzettel_saturn'){
 	    if ($node->field_push_notification['und'][0]['value'] == 1) {
+		    $notification = new Notification('Kastenzettel Saturn','Der Kastenzettel vom Trupp Saturn wurde aktualisiert.');
+		    $notification->setIcon('ic_launcher');
+
 		    $message = new Message();
 	        $message->addRecipient(new Topic('any'));
 	        $message->addRecipient(new Topic('saturn'));
-	        $message->setNotification(new Notification('Kastenzettel Saturn','Der Kastenzettel vom Trupp Saturn wurde aktualisiert.'));
+	        $message->setNotification($notification);
 
 	        $response = $client->send($message);
 
@@ -49,10 +55,13 @@ function fcm_node_update($node){
 	    }
     }elseif ($node->type == 'kastenzettel_wolf'){
 	    if ($node->field_push_notification['und'][0]['value'] == 1) {
+		    $notification = new Notification('Kastenzettel Phönix','Der Kastenzettel der Meute Phönix wurde aktualisiert.');
+		    $notification->setIcon('ic_launcher');
+
 		    $message = new Message();
 	        $message->addRecipient(new Topic('any'));
 	        $message->addRecipient(new Topic('wolf'));
-	        $message->setNotification(new Notification('Kastenzettel Phönix','Der Kastenzettel der Meute Phönix wurde aktualisiert.'));
+	        $message->setNotification($notification);
 
 	        $response = $client->send($message);
 
@@ -66,29 +75,13 @@ function fcm_node_update($node){
 	    }
     }elseif ($node->type == 'kastenzettel_biber'){
         if ($node->field_push_notification['und'][0]['value'] == 1) {
-            $message = new Message();
+	        $notification = new Notification('Kastenzettel Biberstein','Der Kastenzettel der Familie Biberstein wurde aktualisiert.');
+	        $notification->setIcon('ic_launcher');
+
+	        $message = new Message();
             $message->addRecipient(new Topic('any'));
             $message->addRecipient(new Topic('biber'));
-            $message->setNotification(new Notification('Kastenzettel Biberstein','Der Kastenzettel der Familie Biberstein wurde aktualisiert.'));
-
-            $response = $client->send($message);
-
-            if ($response->getStatusCode() == 200) {
-                drupal_set_message("Es wurde eine Benachrichtigung an alle App-Nutzer gesendet!", 'status');
-            }else{
-                drupal_set_message("Es konnte keine Benachrichtigung gesendet werden, da ein Fehler aufgetreten ist!", 'error');
-            }
-        }else{
-            drupal_set_message("Es wurde keine keine Benachrichtigung, da die Checkbox deaktiviert ist!", 'status');
-        }
-    }elseif ($node->type == 'test'){
-        dvr($node->field_push_notification['und'][0]['value']);
-        die();
-
-        if ($node->field_push_notification['und'][0]['value'] == 1) {
-            $message = new Message();
-            $message->addRecipient(new Topic('test'));
-            $message->setNotification(new Notification('Nünenen Test', 'Test-Notification'));
+            $message->setNotification($notification);
 
             $response = $client->send($message);
 
