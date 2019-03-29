@@ -14,48 +14,91 @@ function fcm_node_update($node){
     $client->injectHttpClient(new \GuzzleHttp\Client());
 
     if ($node->type == 'kastenzettel_aetna'){
-        $message = new Message();
-        $message->addRecipient(new Topic('any'));
-        $message->addRecipient(new Topic('aetna'));
-        $message->setNotification(new Notification('Kastenzettel Aetna','Der Kastenzettel vom Stamm Aetna wurde aktualisiert.'));
+	    if ($node->field_push_notification['und'][0]['value'] == 1) {
+		    $message = new Message();
+	        $message->addRecipient(new Topic('any'));
+	        $message->addRecipient(new Topic('aetna'));
+	        $message->setNotification(new Notification('Kastenzettel Aetna','Der Kastenzettel vom Stamm Aetna wurde aktualisiert.'));
 
-        $response = $client->send($message);
+	        $response = $client->send($message);
 
-        if ($response->getStatusCode() == 200) {
-            drupal_set_message("Es wurde eine Benachrichtigung an alle App-Nutzer gesendet!", 'status');
-        }
+	        if ($response->getStatusCode() == 200) {
+	            drupal_set_message("Es wurde eine Benachrichtigung an alle App-Nutzer gesendet!", 'status');
+	        }else{
+		        drupal_set_message("Es konnte keine Benachrichtigung gesendet werden, da ein Fehler aufgetreten ist!", 'error');
+	        }
+	    }else{
+		    drupal_set_message("Es wurde keine keine Benachrichtigung, da die Checkbox deaktiviert ist!", 'status');
+	    }
     }elseif ($node->type == 'kastenzettel_saturn'){
-        $message = new Message();
-        $message->addRecipient(new Topic('any'));
-        $message->addRecipient(new Topic('saturn'));
-        $message->setNotification(new Notification('Kastenzettel Saturn','Der Kastenzettel vom Trupp Saturn wurde aktualisiert.'));
+	    if ($node->field_push_notification['und'][0]['value'] == 1) {
+		    $message = new Message();
+	        $message->addRecipient(new Topic('any'));
+	        $message->addRecipient(new Topic('saturn'));
+	        $message->setNotification(new Notification('Kastenzettel Saturn','Der Kastenzettel vom Trupp Saturn wurde aktualisiert.'));
 
-        $response = $client->send($message);
+	        $response = $client->send($message);
 
-        if ($response->getStatusCode() == 200) {
-            drupal_set_message("Es wurde eine Benachrichtigung an alle App-Nutzer gesendet!", 'status');
-        }
+	        if ($response->getStatusCode() == 200) {
+	            drupal_set_message("Es wurde eine Benachrichtigung an alle App-Nutzer gesendet!", 'status');
+	        }else{
+		        drupal_set_message("Es konnte keine Benachrichtigung gesendet werden, da ein Fehler aufgetreten ist!", 'error');
+	        }
+	    }else{
+		    drupal_set_message("Es wurde keine keine Benachrichtigung, da die Checkbox deaktiviert ist!", 'status');
+	    }
     }elseif ($node->type == 'kastenzettel_wolf'){
-        $message = new Message();
-        $message->addRecipient(new Topic('any'));
-        $message->addRecipient(new Topic('wolf'));
-        $message->setNotification(new Notification('Kastenzettel Phönix','Der Kastenzettel der Meute Phönix wurde aktualisiert.'));
+	    if ($node->field_push_notification['und'][0]['value'] == 1) {
+		    $message = new Message();
+	        $message->addRecipient(new Topic('any'));
+	        $message->addRecipient(new Topic('wolf'));
+	        $message->setNotification(new Notification('Kastenzettel Phönix','Der Kastenzettel der Meute Phönix wurde aktualisiert.'));
 
-        $response = $client->send($message);
+	        $response = $client->send($message);
 
-        if ($response->getStatusCode() == 200) {
-            drupal_set_message("Es wurde eine Benachrichtigung an alle App-Nutzer gesendet!", 'status');
-        }
+	        if ($response->getStatusCode() == 200) {
+	            drupal_set_message("Es wurde eine Benachrichtigung an alle App-Nutzer gesendet!", 'status');
+	        }else{
+		        drupal_set_message("Es konnte keine Benachrichtigung gesendet werden, da ein Fehler aufgetreten ist!", 'error');
+	        }
+	    }else{
+		    drupal_set_message("Es wurde keine keine Benachrichtigung, da die Checkbox deaktiviert ist!", 'status');
+	    }
     }elseif ($node->type == 'kastenzettel_biber'){
-        $message = new Message();
-        $message->addRecipient(new Topic('any'));
-        $message->addRecipient(new Topic('biber'));
-        $message->setNotification(new Notification('Kastenzettel Biberstein','Der Kastenzettel der Familie Biberstein wurde aktualisiert.'));
+        if ($node->field_push_notification['und'][0]['value'] == 1) {
+            $message = new Message();
+            $message->addRecipient(new Topic('any'));
+            $message->addRecipient(new Topic('biber'));
+            $message->setNotification(new Notification('Kastenzettel Biberstein','Der Kastenzettel der Familie Biberstein wurde aktualisiert.'));
 
-        $response = $client->send($message);
+            $response = $client->send($message);
 
-        if ($response->getStatusCode() == 200) {
-            drupal_set_message("Es wurde eine Benachrichtigung an alle App-Nutzer gesendet!", 'status');
+            if ($response->getStatusCode() == 200) {
+                drupal_set_message("Es wurde eine Benachrichtigung an alle App-Nutzer gesendet!", 'status');
+            }else{
+                drupal_set_message("Es konnte keine Benachrichtigung gesendet werden, da ein Fehler aufgetreten ist!", 'error');
+            }
+        }else{
+            drupal_set_message("Es wurde keine keine Benachrichtigung, da die Checkbox deaktiviert ist!", 'status');
+        }
+    }elseif ($node->type == 'test'){
+        dvr($node->field_push_notification['und'][0]['value']);
+        die();
+
+        if ($node->field_push_notification['und'][0]['value'] == 1) {
+            $message = new Message();
+            $message->addRecipient(new Topic('test'));
+            $message->setNotification(new Notification('Nünenen Test', 'Test-Notification'));
+
+            $response = $client->send($message);
+
+            if ($response->getStatusCode() == 200) {
+                drupal_set_message("Es wurde eine Benachrichtigung an alle App-Nutzer gesendet!", 'status');
+            }else{
+                drupal_set_message("Es konnte keine Benachrichtigung gesendet werden, da ein Fehler aufgetreten ist!", 'error');
+            }
+        }else{
+            drupal_set_message("Es wurde keine keine Benachrichtigung, da die Checkbox deaktiviert ist!", 'status');
         }
     }
 }
