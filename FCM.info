@@ -1,4 +1,3 @@
 name = FCM
 description = A FCM-Module which sends Notifications on Node-Update
 core = 7.x
-version = 7.x-2.0
